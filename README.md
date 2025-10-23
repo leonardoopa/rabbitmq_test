@@ -1,1 +1,1 @@
-# rabbitmw_test
+# rabbitmq_test
