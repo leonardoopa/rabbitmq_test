@@ -1,24 +1,22 @@
 import pika
-import sys # Usado para ler argumentos da linha de comando
+import sys  # Usado para ler argumentos da linha de comando
 
 # 1. Conexão (igual ao tutorial 1)
-connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host='localhost'))
+connection = pika.BlockingConnection(pika.ConnectionParameters(host="localhost"))
 channel = connection.channel()
 
-channel.queue_declare(queue='task_queue', durable=True)
+channel.queue_declare(queue="task_queue", durable=True)
 
-message = ' '.join(sys.argv[1:]) or "Hello World!"
+message = " ".join(sys.argv[1:]) or "Hello World!"
 
 channel.basic_publish(
-    exchange='',
-    routing_key='task_queue',
+    exchange="",
+    routing_key="task_queue",
     body=message,
     properties=pika.BasicProperties(
         delivery_mode=2,  # Make message persistent
-    )
+    ),
 )
 
 print(f" [x] Sent {message}")
 connection.close()
-
