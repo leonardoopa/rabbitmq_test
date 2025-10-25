@@ -1,5 +1,4 @@
 import pika
-import sys
 from dotenv import load_dotenv
 import os
 
@@ -11,6 +10,7 @@ rabbitmq_password = os.getenv("RABBITMQ_PASSWORD")
 
 def minha_callback(ch, method, properties, body):
     print(f"Received {body}")
+    print(type(body))
 
 
 connection_parameters = pika.ConnectionParameters(
