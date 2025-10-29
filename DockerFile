@@ -1,0 +1,25 @@
+# 1. Imagem Base (FROM)
+# Começamos com uma imagem oficial do Python.
+# A tag "-slim" é uma versão leve, boa para produção.
+FROM python:3.10-slim
+
+# 2. Diretório de Trabalho (WORKDIR)
+# Define o diretório padrão dentro do container.
+# Todos os comandos a partir daqui serão executados em /app
+WORKDIR /app
+
+# 3. Copiar e Instalar Dependências (COPY / RUN)
+# Copia APENAS o arquivo de requisitos primeiro.
+# Isso aproveita o cache do Docker: se o requirements.txt não mudar,
+# o Docker não vai reinstalar tudo de novo.
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 4. Copiar o Código da Aplicação (COPY)
+# Agora sim, copia o resto dos arquivos (como o consumer.py)
+COPY . .
+
+# 5. Comando de Execução (CMD)
+# Define o comando que será executado quando o container iniciar.
+# Ele vai rodar o seu script do consumer.
+CMD ["python", "consumer.py"]
