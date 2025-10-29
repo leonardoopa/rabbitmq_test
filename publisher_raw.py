@@ -1,4 +1,4 @@
-import pika 
+import pika
 import os
 from dotenv import load_dotenv
 
@@ -26,5 +26,5 @@ channel.basic_publish(
     body="Ola!",
     properties=pika.BasicProperties(
         delivery_mode=2,  # Make message persistent
-    )
+    ),
 )
