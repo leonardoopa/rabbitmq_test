@@ -10,8 +10,8 @@ channel.exchange_declare(exchange='logs', exchange_type='fanout')
 message = ' '.join(sys.argv[1:]) or "info: Olá Mundo!"
 
 channel.basic_publish(
-    exchange='logs',   # Nome da antena
-    routing_key='',    # Não precisa de etiqueta, pois é 'fanout', etiquera que ele fala, seria pra uma exchange especifica
+    exchange='logs',   
+    routing_key='',    # Não precisa de etiqueta, pois é 'fanout', nesse caso ele vai enviar para todas as filas, etiqueta que ele fala, seria pra uma exchange especifica
     body=message
 )
 
