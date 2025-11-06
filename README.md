@@ -1,4 +1,4 @@
-# Projeto: Playground de RabbitMQ 🐰
+# Projeto: Playground de RabbitMQ 
 
 > Este repositório é um ambiente de testes interativo criado para o time de estagiários. O objetivo é "brincar" com os conceitos do RabbitMQ de forma prática e segura.
 
